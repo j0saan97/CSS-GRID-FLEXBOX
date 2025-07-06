@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ejemplo CSS Grid Layout</title>
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    grid-template-rows: 100px 200px 150px;       /* 2 filas con alto fijo */
+    gap: 10px;                            /* espacio entre filas y columnas */
+    padding: 10px;
+    background-color: #333;
+  }
+
+  .item {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+  }
+
+  /* Ejemplo de área que ocupa más columnas */
+  .item2 {
+    background-color: #2196F3;
+    grid-column: span 2; /* ocupa 2 columnas */
+  }
+
+  .item5 {
+    background-color: #f44336;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+  <div class="item">1</div>
+  <div class="item item2">2 (span 2 cols)</div>
+  <div class="item">3</div>
+  <div class="item item5">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+</div>
+
+</body>
+</html>
