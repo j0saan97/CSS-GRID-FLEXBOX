@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nuevo Grid Layout</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "main aside"
+        "footer footer";
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 70px 1fr 50px;
+      height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background-color: #004488;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    main {
+      grid-area: main;
+      background-color: #e0f7fa;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    aside {
+      grid-area: aside;
+      background-color: #ffe0b2;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    footer {
+      grid-area: footer;
+      background-color: #263238;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-layout">
+    <header>
+      Encabezado Principal
+    </header>
+
+    <main>
+      <h2>Contenido Principal</h2>
+      <p>Aquí va el contenido principal, como artículos, noticias, publicaciones, etc.</p>
+      <p>Puedes expandir esta sección según el propósito del sitio.</p>
+    </main>
+
+    <aside>
+      <h3>Sección Lateral</h3>
+      <p>Ideal para widgets, enlaces, publicidad, noticias destacadas o herramientas.</p>
+    </aside>
+
+    <footer>
+      Pie de página © 2025
+    </footer>
+  </div>
+</body>
+</html>

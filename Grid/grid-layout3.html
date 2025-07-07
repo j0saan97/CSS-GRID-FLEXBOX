@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Múltiple</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 60px;
+      background-color: #0d47a1;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+      height: 40px;
+      justify-content: center;
+    }
+
+    .menu-toggle {
+      cursor: pointer;
+    }
+
+    .content-wrapper {
+      margin-top: 60px;  /* header height */
+      margin-bottom: 40px; /* footer height */
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-areas:
+        "sidebar-left main-content sidebar-right"
+        "extra-section main-content sidebar-right";
+      grid-template-columns: 200px 1fr 200px;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+      padding: 1rem;
+      min-height: 100%;
+    }
+
+    .sidebar-left {
+      grid-area: sidebar-left;
+      background-color: #ffe082;
+      padding: 1rem;
+    }
+
+    .main-content {
+      grid-area: main-content;
+      background-color: #e0f7fa;
+      padding: 1rem;
+    }
+
+    .sidebar-right {
+      grid-area: sidebar-right;
+      background-color: #d1c4e9;
+      padding: 1rem;
+    }
+
+    .extra-section {
+      grid-area: extra-section;
+      background-color: #c8e6c9;
+      padding: 1rem;
+    }
+
+    /* Responsive colapso en móviles */
+    @media (max-width: 768px) {
+      .grid-layout {
+        grid-template-areas:
+          "main-content"
+          "sidebar-left"
+          "sidebar-right"
+          "extra-section";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>Mi Sitio</div>
+    <div class="menu-toggle">☰ Menú</div>
+  </header>
+
+  <div class="content-wrapper">
+    <div class="grid-layout">
+      <div class="sidebar-left">Barra izquierda (navegación, filtros)</div>
+      <div class="main-content">
+        <h2>Contenido principal</h2>
+        <p>Esta es el área principal donde se coloca el contenido más importante del sitio.</p>
+      </div>
+      <div class="sidebar-right">Barra derecha (widgets, noticias)</div>
+      <div class="extra-section">Zona extra (enlaces, recomendaciones, acciones)</div>
+    </div>
+  </div>
+
+  <footer>
+    Pie de página © 2025
+  </footer>
+</body>
+</html>
