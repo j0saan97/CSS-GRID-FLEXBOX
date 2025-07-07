@@ -1,55 +1,66 @@
-RESUMEN DE CSS GRID
--------------------
+Grid Layout es un sistema de diseño bidimensional en CSS que permite distribuir elementos HTML en filas y columnas de manera eficiente y controlada. A diferencia de Flexbox, que trabaja mejor en un solo eje (horizontal o vertical), CSS Grid permite un control total sobre ambos ejes, lo que lo hace ideal para crear diseños más complejos y estructurados.
 
-1. ¿QUÉ ES GRID?
-   - Sistema de diseño bidimensional para organizar contenido en filas y columnas.
-   - Permite distribuir elementos fácilmente en layouts complejos y responsivos.
+Conceptos Fundamentales:
 
-2. PROPIEDADES PRINCIPALES DEL CONTENEDOR (display: grid)
-   - display: grid;
-   - grid-template-columns: define columnas (ej: 1fr 2fr 1fr);
-   - grid-template-rows: define filas (ej: 100px auto);
-   - grid-template-areas: define zonas por nombre;
-   - gap: espacio entre filas/columnas;
-   - justify-items / align-items: alineación del contenido interno;
+Grid Container (Contenedor de rejilla): Es el elemento que se declara con la propiedad display: grid;. Este contenedor define el contexto del grid.
 
-3. PROPIEDADES DEL ELEMENTO HIJO
-   - grid-area: nombre del área definida en grid-template-areas;
-   - grid-column / grid-row: posición explícita (inicio / fin);
-   - justify-self / align-self: alineación del ítem individual;
+Grid Items (Elementos de rejilla): Son los elementos hijos directos del grid container. Estos se posicionan automáticamente o manualmente en las celdas del grid.
 
-4. FUNCIONES UTILES
-   - fr: fracción del espacio disponible;
-   - repeat(): repite valores (ej: repeat(3, 1fr));
-   - minmax(): define rangos (ej: minmax(200px, 1fr));
-   - auto-fit / auto-fill: para grids adaptables;
+Unidades de Medida:
 
-5. MEDIA QUERIES (RESPONSIVE)
-   - Permiten cambiar la estructura grid según el ancho de la pantalla.
-   - Ejemplo:
-     @media (max-width: 768px) {
-       grid-template-columns: 1fr;
-     }
+CSS Grid acepta diversas unidades de medida para definir el tamaño de filas y columnas:
 
-6. VENTAJAS DE GRID
-   - Ideal para layouts completos (cabecera, contenido, sidebar, footer).
-   - Más control que Flexbox en estructuras 2D.
-   - Buena legibilidad y mantenimiento del código.
+px (píxeles): Medida fija, no responde a cambios en el tamaño del viewport.
 
-7. RECURSO RÁPIDO PARA ÁREAS
-   Ejemplo:
+% (porcentaje): Proporcional al tamaño del contenedor padre.
 
-   .container {
-     display: grid;
-     grid-template-areas:
-       "header header"
-       "sidebar main"
-       "footer footer";
-     grid-template-columns: 200px 1fr;
-     grid-template-rows: 60px 1fr 40px;
-   }
+em / rem: Relativas al tamaño de fuente del elemento o del documento.
 
-   .header  { grid-area: header; }
-   .sidebar { grid-area: sidebar; }
-   .main    { grid-area: main; }
-   .footer  { grid-area: footer; }
+fr (fracción): Unidad exclusiva de CSS Grid que representa una fracción del espacio disponible. Por ejemplo, 1fr 2fr divide el espacio total en 3 partes, asignando 1 parte a la primera columna y 2 partes a la segunda.
+
+auto: Ajusta automáticamente el tamaño según el contenido del elemento.
+
+Grid Template Columns y Rows:
+
+Estas propiedades definen explícitamente la estructura de la rejilla en cuanto a columnas y filas.
+
+grid-template-columns: Define la cantidad y el tamaño de las columnas.
+
+grid-template-rows: Define la cantidad y el tamaño de las filas.
+
+Ejemplo:
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 100px auto;
+}
+
+Este código crea un grid con 3 columnas: la primera y la tercera ocupan 1 fracción del espacio cada una, mientras que la segunda ocupa el doble. La primera fila mide 100px y la segunda se ajusta al contenido.
+
+Grid Areas (Áreas de Rejilla):
+
+Una de las características más poderosas de CSS Grid es la posibilidad de nombrar áreas y colocarlas de forma semántica.
+
+Se usa la propiedad grid-template-areas en el contenedor.
+
+Luego se asignan estas áreas a los elementos con grid-area.
+
+Ejemplo:
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "header header"
+    "sidebar content";
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+
+Este diseño crea un encabezado que ocupa ambas columnas, y luego dos elementos: un sidebar a la izquierda y contenido principal a la derecha.
+
+Grid Layout ofrece un sistema robusto y flexible para construir interfaces web modernas, con herramientas potentes como las fracciones (fr), las áreas nombradas y la capacidad de definir de forma explícita el tamaño y posición de cada elemento dentro de la rejilla.
